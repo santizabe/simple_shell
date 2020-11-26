@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * forkwaitexec - executes the commands passed
- * @args: commands passed in CL
+ * @args: commands
  * @status: receiving the status true or false
  * @count: variable that counts the commands passed
  * @stad_exit: integer static

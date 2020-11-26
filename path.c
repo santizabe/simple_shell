@@ -4,7 +4,7 @@
  * _path - search for PATH in the env
  * @args: arguments saved on getline
  * @argv: arguments passed
- * @env: environment variable
+ * @stad_exit: environment variable
  * Return: 0 success
  */
 int _path(char *args, char **argv, char **env, int *stad_exit)
