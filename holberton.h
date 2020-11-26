@@ -1,34 +1,48 @@
-#ifndef HOLBY
-#define HOLBY
+#ifndef SHELL
+#define SHELL
 
-/* Libraries*/
-
-#include <stdlib.h>
-#include <stdarg.h>
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
+#include <stdlib.h>
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <ctype.h>
+#include <unistd.h>
+#include <dirent.h>
+#include <stddef.h>
+#include <string.h>
 
-/* prototypes */
-
-char *_strncpy(char *dest, char *src, int n);
+extern char **environ;
+/**
+ * struct path - singly linked list
+ * @path: string - (malloc'ed string)
+ * @next: points to the next node
+ *
+ * Description: singly linked list node structure
+ * for Shell project
+ */
+typedef struct path
+{
+	char *path;
+	struct path *next;
+} path_t;
+void _signal(int s);
+void shell_loop(char **argv);
+size_t _getline(char **buffer, size_t *n);
+int execute(char *input);
+int _strcmp(char *s1, char *s2);
+path_t *add_path(path_t **head, const char *str);
+void free_list(path_t *head);
 int _strlen(char *s);
-char *_strncat(char *dest, char *src, int n);
-int _putchar (char c);
-int readbuff(char *str);
-void execArgs(char **parsed);
-void _prompt(void);
-int _print_string(char ch);
-void _printf(char *string);
-int _strlen(char *s);
-char _command_prompt(void);
 char *_strcpy(char *dest, char *src);
+char *_strdup(char *str);
+char *_getenv(const char *name);
+path_t *do_link();
 char *_strcat(char *dest, char *src);
-int _strcmp(const char *s1, char *s2);
-void manual_mode(int argc, char *argv[]);
-void error_return(char *cmd, int ret_val, char **arg);
+void print_env(void);
+int execute_path(char *exec, char **options);
+void write_error(char *name, char **buffer, size_t nerrors);
+char **do_arguments(char *input);
+char *_strtok(char *str, char *tokens);
+int val_spaces(char *buffer);
 
-#endif /* HOLBY */
+#endif
