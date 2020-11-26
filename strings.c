@@ -1,109 +1,84 @@
 #include "holberton.h"
 
 /**
- * _strcmp - compare a string adding all characters
- * @s1: String one
- * @s2: String two
- * Return: A hash
- **/
-
-int _strcmp(char *s1, char *s2)
-{
-	int i = 0;
-	int res = 0;
-
-	while (s1[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-		{
-			res = (s1[i] - s2[i]);
-			break;
-		}
-		i++;
-	}
-	return (res);
-}
-
-/**
- * _strcat - concatenates two strings
- * @dest: pointer one
- * @src: pointer two
- * Return: A string
- **/
+ * _strcat - wenas.
+ * @dest: bring a direction.
+ * @src: bring a int.
+ * Return: Always 0.
+ */
 
 char *_strcat(char *dest, char *src)
 {
-	int i = 0;
-	int j = 0;
+	int y, j;
 
-	while (dest[i])
+	y = j = 0;
+	while (*(dest + y))
+		y++;
+	while ((*(dest + y) = *(src + j)))
 	{
-		i++;
-	}
-	while (src[j])
-	{
-		dest[i] = src[j];
-		i++;
+		y++;
 		j++;
-		if (src[j] == '\0')
-			break;
 	}
-	dest[i] = '\0';
 	return (dest);
 }
-
 /**
- * _strcpy - store a copy of a pointer into another pointer
- * @dest: Pointer one
- * @src: Pointer two
- * Return: Pointer
- **/
+ * _strncmp - string compare
+ * @s1: String compare 1
+ * @s2: String compare 2
+ * @n: bites
+ * Return: 0 or diference.
+ */
 
-char *_strcpy(char *dest, char *src)
+int _strncmp(char *s1, char *s2, size_t n)
 {
-	int i = 0;
+	size_t counter;
 
-	while (src[i] != '\0')
+	for (counter = 0; counter < n && s1[counter] != '\0'; counter++)
 	{
-		dest[i] = src[i];
-		i++;
+		if (s1[counter] != s2[counter])
+		{
+			return (s1[counter] - s2[counter]);
+		}
 	}
-	dest[i] = '\0';
-	return (dest);
+
+	return (0);
 }
 
 /**
- * _strlen - prints a string
- * @s: This is the string to evaluate
- * Return: Quantity of characters into a string
- **/
+ * _strcmp - string compare
+ * @s1: String compare 1
+ * @s2: String compare 2
+ *
+ * Return: 0 or diference.
+ */
+
+int _strcmp(char *s1, char *s2)
+{
+	int counter;
+
+	for (counter = 0; s1[counter] != '\0'; counter++)
+	{
+		if (s1[counter] != s2[counter])
+		{
+			return (s1[counter] - s2[counter]);
+		}
+	}
+
+	return (0);
+}
+
+/**
+ * _strlen - calculates the length of the string.
+ * @s:pointer variable.
+ * Return: Always 0.
+ */
 
 int _strlen(char *s)
 {
-	int i = 0;
+	int a;
 
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-/**
- * _strdup - reallocate an array in newly allocated space in memory
- * @str: starter address to reallocate
- * Return: New address of array
- **/
-
-char *_strdup(char *str)
-{
-	char *nstr = NULL;
-
-	if (str == NULL)
-		return (NULL);
-	nstr = malloc(_strlen(str) + 1);
-
-	if (nstr == NULL)
-		return (NULL);
-
-	_strcpy(nstr, str);
-	return (nstr);
+	for (a = 0; s[a] != '\0'; a++)
+	{
+	}
+	return (a);
 }

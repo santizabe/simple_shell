@@ -13,7 +13,7 @@ int built_in(char *sr, char **env)
 	ssize_t err_val;
 
 	if (sr[1] == '\0')
- 	{
+	{
 		return (1);
 	}
 	token2[0] = strtok(sr, " ,!?\'\"\n\t");

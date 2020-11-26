@@ -23,7 +23,7 @@ void prompt(void)
 		}
 
 		sr = malloc(sizeof(char) * 60);
-		for(a = 0; a < 60; a++)
+		for (a = 0; a < 60; a++)
 			sr[a] = '\0';
 		_strcat(sr, s);
 		if (built_in(sr, environ))
@@ -31,7 +31,7 @@ void prompt(void)
 		signal(SIGINT, sig);
 
 		execprocess(shpath);
-		postfork:;
+postfork:;
 		free(sr);
 		i++;
 	}
