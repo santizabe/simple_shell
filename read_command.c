@@ -11,6 +11,7 @@ char *read_command(char **env)
 	char *string = NULL;
 	size_t bufsize = 0;
 	char **args = NULL;
+
 	ssize_t __attribute__((unused)) read;
 	int i = 0, status, num_arg;
 	static int count, stad_exit;
