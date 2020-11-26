@@ -1,48 +1,51 @@
 #include "holberton.h"
 /**
- * main - main
- * @argc: void
- * @argv: args
- * Return: 0
- **/
-int main(int argc, char **argv)
+ * prompt - command line that we put caracters
+ */
+void prompt(void)
 {
-	int status = 0, errors = 1, len = 0;
-	pid_t child;
-	char *buffer = NULL;
-	size_t lenb = 0;
-	(void)argc;
+	int x = 0, a;
+	size_t buff = 50;
+	ssize_t err;
+	char *shpath, *sr;
 
-	while (1)
+	shpath = getpath();
+	i = 1;
+	while (x >= 0)
 	{
-		if (isatty(0) == 1)
-			write(STDOUT_FILENO, "($) ", 4);
-		signal(SIGINT, _signal);
-		len = getline(&buffer, &lenb, stdin);
-		if (((int)len == -1) || (_strcmp(buffer, "exit\n") == 0))
+		printpath();
+		s = NULL;
+		err = getline(&s, &buff, stdin);
+		if (err == EOF)
 		{
-			if ((int)len == -1 && isatty(0) == 1)
-				write(1, "\n", 1);
+			free(s);
 			break;
 		}
-		if (_strcmp(buffer, "\n") == 0 || val_spaces(buffer) == 0)
-			continue;
-		child = fork();
-		if (child == -1)
-			free(buffer), perror("Error:");
-		if (child == 0)
-		{
-			if (execute(buffer) == -1)
-			{
-				write_error(argv[0], &buffer, errors);
-				free(buffer);
-				exit(127);
-			}
-			exit(EXIT_SUCCESS);
-		}
-		else
-			wait(&status), errors++;
+
+		sr = malloc(sizeof(char) * 60);
+		for(a = 0; a < 60; a++)
+			sr[a] = '\0';
+		_strcat(sr, s);
+		if (built_in(sr, environ))
+			goto postfork;
+		signal(SIGINT, sig);
+
+		execprocess(shpath);
+		postfork:;
+		free(sr);
+		i++;
 	}
-	free(buffer);
-	return (0);
+}
+/**
+ * main - a simple shell, imitation of prompt
+ * @argc: number of parameters
+ * @argv: arguments
+ * Return: finish the process.
+ */
+int main(int argc, char **argv)
+{
+	(void)argc;
+	errgv = argv[0];
+	prompt();
+	exit(status);
 }
