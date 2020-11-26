@@ -75,4 +75,4 @@ My shell will be compiled this way:
   gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
   
 ## AUTHOR ##
-Santiago Zapata Bedoya  Github: [Named Link](https://github.com/santizabe "santizabe")
+Santiago Zapata Bedoya  Github: [santizabe](https://github.com/santizabe "santizabe")
